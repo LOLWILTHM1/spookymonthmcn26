@@ -66,13 +66,27 @@ function createBlock() {
     currentLineCount = 0;
 }
 
+function clearColumns() {
+
+    history.innerHTML = "";
+
+    currentPosition = 0;
+    currentBlock = null;
+    currentLineCount = 0;
+}
+
 
 function moveToNextPosition() {
 
     currentPosition++;
 
     if (currentPosition >= positions.length) {
-        currentPosition = 0;
+
+        clearColumns();
+
+        createBlock();
+
+        return;
     }
 
     createBlock();
