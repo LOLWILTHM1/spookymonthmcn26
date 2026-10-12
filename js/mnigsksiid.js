@@ -49,14 +49,18 @@ const themes = [
 ];
 
 let selectedPositions = [];
+let squareId = 1;
 
 for (let row = 8; row >= 1; row--) {
     for (let col = 0; col < 8; col++) {
         const square = document.createElement('div');
+
         const letter = String.fromCharCode(65 + col);
         const position = letter + row;
 
         square.classList.add('square');
+        square.id = squareId;
+        squareId++;
 
         square.addEventListener('click', () => {
             if (selectedPositions.length >= 4) {
@@ -85,7 +89,9 @@ for (let row = 8; row >= 1; row--) {
                         window.location.href = "clatrincikveat.html";
                     }, 4500);
                 } else {
-                    message.textContent = '...YOU WERE NOT SUPPOSED TO TOUCH THAT.';
+                    message.textContent =
+                        '...YOU WERE NOT SUPPOSED TO TOUCH THAT.';
+
                     document.body.classList.add('wrong');
 
                     setTimeout(() => {
